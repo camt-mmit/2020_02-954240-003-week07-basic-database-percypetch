@@ -1,3 +1,33 @@
+CREATE TABLE `products` (
+`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+`created_at` timestamp NULL DEFAULT NULL,
+`updated_at` timestamp NULL DEFAULT NULL,
+`code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+`name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`price` decimal(15,2) NOT NULL,
+`description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `products_code_unique` (`code`),
+KEY `products_created_at_index` (`created_at`),
+KEY `products_updated_at_index` (`updated_at`)
+);
+
+CREATE TABLE `shops` (
+ `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+ `created_at` timestamp NULL DEFAULT NULL,
+ `updated_at` timestamp NULL DEFAULT NULL,
+ `code` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `latitude` double NOT NULL,
+ `longitude` double NOT NULL,
+ `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `shops_code_unique` (`code`),
+ KEY `shops_created_at_index` (`created_at`),
+ KEY `shops_updated_at_index` (`updated_at`)
+);
+
 INSERT INTO `products` (`created_at`, `updated_at`, `code`, `name`, `price`, `description`) VALUES ('2021-02-01 01:33:09', '2021-02-01 01:33:11', 'PD001', 'Programming PHP', 345.00, 'Why is PHP the most widely used programming language on the web?\r\nThis updated edition teaches everything you need to know to create\r\neffective web applications using the latest features in PHP 7.4.\r\nYou’ll start with the big picture and then dive into:\r\nlanguage syntax\r\nprogramming techniques\r\nand other details\r\nusing examples that illustrate both correct usage and common idioms.');
 INSERT INTO `products` (`created_at`, `updated_at`, `code`, `name`, `price`, `description`) VALUES ('2021-02-01 01:35:51', '2021-02-01 01:35:52', 'PD002', 'JavaScript: The Definitive Guide', 250.00, 'JavaScript is the programming language of the web and is used by more\r\nsoftware developers today than any other programming language.\r\nFor nearly 25 years this best seller has been the go-to guide for\r\nJavaScript programmers. The seventh edition is fully updated to cover\r\nthe 2020 version of JavaScript, and new chapters cover:\r\nclasses\r\nmodules\r\niterators\r\ngenerators\r\nPromises\r\nasync/await\r\nand metaprogramming.\r\nYou’ll find illuminating and engaging example code throughout.');
 INSERT INTO `products` (`created_at`, `updated_at`, `code`, `name`, `price`, `description`) VALUES ('2021-02-01 01:37:17', '2021-02-01 01:37:18', 'PD003', 'Learning PHP, MySQL & JavaScript', 450.00, 'Build interactive, data driven websites with the potent combination\r\nof open source technologies and web standards, even if you have only\r\nbasic HTML knowledge. In this update to this popular hands on guide,\r\nyou’ll tackle dynamic web programming with the latest versions of\r\ntoday’s core technologies:\r\nPHP\r\nMySQL\r\nJavaScript\r\nCSS\r\nHTML5\r\nand key jQuery libraries.');
